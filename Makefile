@@ -1,37 +1,37 @@
-NAME = philo
-NAME_BONUS = philo_bonus
+NAME 		=	philo
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC 			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -f
 
+SRCS	 =	main.c \
+			init_arg.c\
+			util.c
 
-SRCS =
-BONUS_SRCS=
 OBJS = $(SRCS:%.c=%.o)
-INC_DIR		=	./includes
 
 OBJS		=	$(SRCS:.c=.o)
 BONUS_OBJS	=	$(BONUS_SRCS:.c=.o)
+INCLUDES 	= 	-I./
 
 .PHONY: all clean fclean re bonus
 
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $(<:.c=.o)
+
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c -o $@ $
 $(NAME): $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
 
 $(NAME_BONUS): $(BONUS_OBJS)
 	$(CC) -o $@ $^
 
-bonus: $(NAME_BONUS)
-
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS) 
 
 fclean: clean
-	$(RM) $(NAME) $(NAME_BONUS)
+	$(RM) $(NAME)
 
 re :
 		make fclean
