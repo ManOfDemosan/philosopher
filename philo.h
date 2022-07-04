@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:58:38 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 15:36:21 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:54:58 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ int		get_time(void);
 void	alt_sleep(long long time_to_sleep);
 
 int		init_philo(t_philo_info *info);
+
 void	philo_print(t_philo *philo, int state);
+void	philo_take_fork(t_philo *philo);
 #endif

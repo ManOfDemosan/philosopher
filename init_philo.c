@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 20:26:52 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 14:56:21 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:57:48 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	make_philo(t_philo_info *info)
 		info->philo_args[i].fed_time = get_time();
 		info->philo_args[i].eat_cnt = 0;
 		info->philo_args[i].print = &(info->print);
-		info->philo_args[i].deadcheck = &(info->deadcheck);
+		info->philo_args[i].deadcheck = &(info->deadcheck[i]);
 		info->philo_args[i].left_fork = &(info->forks[i]);
 		info->philo_args[i].right_fork = &(info->forks \
 		[((i + 1) % info->num_of_philos)]);
@@ -80,4 +80,3 @@ int	init_philo(t_philo_info *info)
 		return (1);
 	return (0);
 }
-

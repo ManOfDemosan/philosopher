@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:54:52 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 15:38:20 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:55:11 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	philo_eat(t_philo *philo)
 {
+	philo_take_fork(philo);
 }
 
 int	philo_sleep(t_philo *philo)
