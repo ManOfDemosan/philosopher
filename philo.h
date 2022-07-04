@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:58:38 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 21:58:32 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:05:16 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # define DEAD 4
 # define FORK_L 5
 # define FORK_R 6
-
 
 # include <stdio.h>
 # include <pthread.h>
@@ -53,7 +52,7 @@ typedef struct s_philo_info{
 	int				finish_line;
 	long long		time_of_start;
 	int				philo_dead;
-	int				philo_eat;//done_eat
+	int				philo_eat;
 	pthread_mutex_t	print;
 	pthread_mutex_t	*deadcheck;
 	pthread_mutex_t	*forks;
