@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:58:38 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 15:54:58 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:04:03 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@
 # define FORK_L 5
 # define FORK_R 6
 
+
+# include <stdio.h>
 # include <pthread.h>
-# include <unistd.h>
 # include <sys/time.h>
+# include <limits.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 
 typedef struct s_philo_info	t_philo_info;
 
@@ -63,6 +68,7 @@ int		get_time(void);
 void	alt_sleep(long long time_to_sleep);
 
 int		init_philo(t_philo_info *info);
+void	*philo_func(void *data);
 
 void	philo_print(t_philo *philo, int state);
 void	philo_take_fork(t_philo *philo);

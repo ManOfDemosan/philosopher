@@ -6,11 +6,12 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:05:55 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 14:55:15 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:44:46 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {	
@@ -29,7 +30,7 @@ int	main(int ac, char **av)
 
 // void	*t_putstr(void *arg)
 // {
-	
+
 // 	printf("hello\n");
 // 	return (NULL);
 // }

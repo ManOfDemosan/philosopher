@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:54:52 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 15:55:11 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:03:59 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 int	philo_eat(t_philo *philo)
 {
 	philo_take_fork(philo);
+	pthread_mutex_lock(philo->deadcheck);
+	philo->eat_cnt++;
+	philo_print(philo, EAT);
+	philo->fed_time = get_time();
+	pthread_mutex_unlock(philo->deadcheck);
+	alt_sleep(philo->info->time_to_eat);
+	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_unlock(philo->left_fork);
+	return (0);
 }
 
 int	philo_sleep(t_philo *philo)
@@ -31,16 +40,18 @@ int	philo_think(t_philo *philo)
 	return (0);
 }
 
-void	philo_func(t_philo_info *info)
+void	*philo_func(void *data)
 {
 	t_philo	*philo;
 
-	while (info->philo_dead == 0 && info->philo_eat == 0)
+	philo = (t_philo *)data;
+	while (philo->info->philo_dead == 0 && philo->info->philo_eat == 0)
 	{
 		philo_eat(philo);
-		if (info->philo_dead == 1)
+		if (philo->info->philo_dead == 1)
 			break ;
 		philo_sleep(philo);
 		philo_think(philo);
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:34:04 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/06/30 13:55:06 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:03:29 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
+
 
 int	possible_to_atoi(char *str)
 {
