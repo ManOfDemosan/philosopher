@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:37:59 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 15:35:44 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:36:58 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int	ft_atoi(const char *str)
 	return ((int)digit * button);
 }
 
-int	get_time(void)
+long long	get_time(void)
 {
 	struct timeval	time;
-	int				ms;
+	long long		ms;
 
 	if (gettimeofday(&time, NULL) != 0)
 		return (1);

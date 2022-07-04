@@ -6,12 +6,62 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:05:55 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 16:44:46 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 20:19:56 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdio.h>
+
+int	check_eat(t_philo_info *info)
+{
+	int	i;
+
+	i = 0;
+	while (i < info->num_of_philos && \
+	info->philo_args[i].eat_cnt >= info->finish_line)
+		i++;
+	if (i == info->num_of_philos)
+		info->philo_eat = 1;
+	return (0);
+}
+
+int	check_dead(t_philo_info *info)
+{
+	int	i;
+
+	i = 0;
+	while (i < info->num_of_philos && (info->philo_dead == 0))
+	{
+		pthread_mutex_lock(&(info->deadcheck[i]));
+		if (get_time() - info->philo_args[i].fed_time \
+		> info->time_to_die)
+		{
+			philo_print(&(info->philo_args[i]), DEAD);
+			info->philo_dead = 1;
+		}
+		pthread_mutex_unlock(&(info->deadcheck[i]));
+		i++;
+	}
+	return (0);
+}
+
+int	check_philo(t_philo_info *info)
+{
+	while (1)
+	{
+		check_dead(info);
+		if (info->philo_dead == 1)
+			break ;
+		check_eat(info);
+		if (info->philo_eat == 1)
+		{
+			pthread_mutex_lock(&(info->print));
+			printf("All philosophers are done eating.\n");
+			break ;
+		}
+	}
+	return (0);
+}
 
 int	main(int ac, char **av)
 {	
@@ -23,25 +73,6 @@ int	main(int ac, char **av)
 		return (1);
 	if (init_philo(&info) != 0)
 		return (1);
-	else
-		printf("SUCESS!\n");
+	check_philo(&info);
 	return (0);
 }
-
-// void	*t_putstr(void *arg)
-// {
-
-// 	printf("hello\n");
-// 	return (NULL);
-// }
-
-// int	main(int ac, char **av)
-// {
-// 	pthread_t philo[5];
-
-// 	for(int i = 0; i < 5; i++)
-// 	{
-// 		pthread_create(&(philo[i]), NULL, t_putstr, NULL);
-// 		pthread_join(philo[i], NULL);
-// 	}
-// }

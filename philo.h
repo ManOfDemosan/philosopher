@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:58:38 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 17:04:03 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 20:10:46 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,23 @@ typedef struct s_philo_info{
 	int				finish_line;
 	long long		time_of_start;
 	int				philo_dead;
-	int				philo_eat;
+	int				philo_eat;//done_eat
 	pthread_mutex_t	print;
 	pthread_mutex_t	*deadcheck;
 	pthread_mutex_t	*forks;
 }	t_philo_info;
 /*철학자들 총괄*/
 
-int		init_arg(int ac, char **av, t_philo_info *info);
-int		print_err(char *str);
-int		ft_atoi(const char *str);
+int			init_arg(int ac, char **av, t_philo_info *info);
+int			print_err(char *str);
+int			ft_atoi(const char *str);
 
-int		get_time(void);
-void	alt_sleep(long long time_to_sleep);
+long long	get_time(void);
+void		alt_sleep(long long time_to_sleep);
 
-int		init_philo(t_philo_info *info);
-void	*philo_func(void *data);
+int			init_philo(t_philo_info *info);
+void		*philo_func(void *data);
 
-void	philo_print(t_philo *philo, int state);
-void	philo_take_fork(t_philo *philo);
+void		philo_print(t_philo *philo, int state);
+void		philo_take_fork(t_philo *philo);
 #endif

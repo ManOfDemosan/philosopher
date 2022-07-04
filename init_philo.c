@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 20:26:52 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 17:00:30 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:07:12 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ int	make_philo(t_philo_info *info)
 		return (print_err("Error: Philo Array Malloc Failure\n"));
 	while (i < info->num_of_philos)
 	{	
-		pthread_create(&(info->philo_args[i].thread), \
-		NULL, philo_func(info), &(info->philo_args[i]));
-		pthread_detach(info->philo_args[i].thread);
 		info->philo_args[i].number = i + 1;
 		info->philo_args[i].fed_time = get_time();
 		info->philo_args[i].eat_cnt = 0;
@@ -66,6 +63,9 @@ int	make_philo(t_philo_info *info)
 		info->philo_args[i].right_fork = &(info->forks \
 		[((i + 1) % info->num_of_philos)]);
 		info->philo_args[i].info = info;
+		pthread_create(&(info->philo_args[i].thread), \
+		NULL, philo_func, &(info->philo_args[i]));
+		pthread_detach(info->philo_args[i].thread);
 		i++;
 	}
 	return (0);
