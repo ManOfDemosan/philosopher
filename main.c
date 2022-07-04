@@ -6,12 +6,11 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:05:55 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/06/30 13:46:02 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:55:15 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdio.h>
 
 int	main(int ac, char **av)
 {	
@@ -21,9 +20,10 @@ int	main(int ac, char **av)
 		return (print_err("Error: argument\n"));
 	if (init_arg(ac, av, &info) != 0)
 		return (1);
+	if (init_philo(&info) != 0)
+		return (1);
 	else
 		printf("SUCESS!\n");
-	//init_philo(&info);
 	return (0);
 }
 

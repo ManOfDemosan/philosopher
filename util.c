@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:37:59 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/06/30 13:08:43 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:35:44 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,13 @@ int	get_time(void)
 		return (1);
 	ms = time.tv_sec * 1000 + time.tv_usec / 1000;
 	return (ms);
+}
+
+void	alt_sleep(long long time_to_sleep)
+{
+	long long	target_time;
+
+	target_time = get_time() + time_to_sleep;
+	while (target_time > get_time())
+		usleep(100);
 }
