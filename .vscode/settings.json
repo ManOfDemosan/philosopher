@@ -1,10 +1,11 @@
 {
-	"files.associations": {
-		"stdio.h": "c",
-		"locale": "c",
-		"algorithm": "c",
-		"cmath": "c",
-		"complex": "c",
-		"functional": "c"
-	}
+  "files.associations": {
+    "stdio.h": "c",
+    "locale": "c",
+    "algorithm": "c",
+    "cmath": "c",
+    "complex": "c",
+    "functional": "c",
+    "philo.h": "c"
+  }
 }

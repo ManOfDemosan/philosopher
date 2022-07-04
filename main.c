@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:05:55 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 20:19:56 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 21:58:27 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	check_eat(t_philo_info *info)
 
 	i = 0;
 	while (i < info->num_of_philos && \
-	info->philo_args[i].eat_cnt >= info->finish_line)
+	 info->finish_line != -1 && \
+	 info->philo_args[i].eat_cnt >= info->finish_line)
 		i++;
 	if (i == info->num_of_philos)
 		info->philo_eat = 1;

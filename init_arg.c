@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:34:04 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/07/04 18:35:49 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/07/04 21:58:25 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
-
 
 int	possible_to_atoi(char *str)
 {
@@ -58,6 +57,7 @@ int	init_arg(int ac, char **av, t_philo_info *info)
 	else
 		info->finish_line = -1;
 	info->time_of_start = get_time();
+	info->philo_eat = 0;
 	if (get_time() == 1)
 		return (print_err("Get Time Failure\n"));
 	return (0);
