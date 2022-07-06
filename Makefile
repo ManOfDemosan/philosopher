@@ -1,7 +1,7 @@
 NAME 		=	philo
 
 CC 			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -g3
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 SRCS	 =	init_arg.c\
